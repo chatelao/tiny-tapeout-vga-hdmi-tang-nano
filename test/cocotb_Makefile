@@ -1,0 +1,9 @@
+SIM ?= icarus
+TOPLEVEL_LANG ?= verilog
+
+VERILOG_SOURCES += $(PWD)/../src/tt_project.v
+
+TOPLEVEL = tt_um_minimal_echo
+COCOTB_TEST_MODULES = test_tt_project
+
+include $(shell cocotb-config --makefiles)/Makefile.sim
