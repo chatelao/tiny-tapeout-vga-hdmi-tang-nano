@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cocotb / Simulation
+sim_build/
+results.xml
+*.vvp
+*.vcd
+
+# FPGA / Gowin Build Artifacts
+*.json
+*.fs
+*.map
+
+# Firmware Build Artifacts
+*.o
+*.elf
+*.bin
+
+# OS
+.DS_Store
