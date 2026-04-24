@@ -1,0 +1,19 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Toolchain
+        run: bash install.sh
+
+      - name: Run Tests
+        run: bash run_tests.sh
