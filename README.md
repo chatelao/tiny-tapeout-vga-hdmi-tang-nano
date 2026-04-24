@@ -1,22 +1,24 @@
 # VGA to HDMI for Tiny Tapeout on Tang Nano 4K
 
-This project aims to provide a bridge between Tiny Tapeout designs (using the VGA PMOD interface) and modern HDMI displays using the Tang Nano 4K FPGA board.
+This project provides a hardware bridge to display Tiny Tapeout (TT) VGA designs on modern HDMI monitors using the Sipeed Tang Nano 4K FPGA board.
 
-## Current Project Status
-This repository is currently in its **initialization phase**. The code provides a foundational UART echo implementation running on the Cortex-M3 core of the Tang Nano 4K. This serves as a starting point for building more complex I/O interfaces, such as VGA input and HDMI output.
+## Goals
+- **HDMI-Output**: High-quality digital video and audio output.
+- **TT PMOD Support**: Compatibility with Tiny Tapeout VGA and Audio PMOD specifications.
+- **Verification**: Robust testing using Cocotb for RTL and Renode for firmware/system verification.
 
-- **Completed**: Project structure, base UART code integration, pin assignment synchronization.
-- **In Progress**: Defining VGA to HDMI conversion logic, preparing Tiny Tapeout project integration.
+## Architecture
+- **Tang Nano 4K**: Powered by the Gowin GW1NSR-LV4C, featuring a Cortex-M3 hard core and FPGA fabric.
+- **Tiny Tapeout Wrapper**: An APB-to-TT bridge allowing the Cortex-M3 to interact with TT designs.
+- **VGA to HDMI**: RTL logic to convert 2-bit (or 6-bit) VGA signals to TMDS signals for HDMI.
 
 ## Project Structure
-- `/src`: Foundational FPGA and firmware source code (currently a UART echo base).
-- `/definitions`: Datasheets and standard specifications.
-- `/examples`: Tiny Tapeout project examples.
-- `/test`: Unit and system tests.
-- `ROADMAP.md`: Project progress and upcoming milestones.
-- `SERIAL_PORT_ACCESS.md`: Instructions for interacting with the on-board UART.
+- `/src`: Verilog source and C firmware.
+- `/definitions`: Hardware specifications and pinout documentation.
+- `/examples`: Example TT projects and data scripts.
+- `/test`: Test suite including Cocotb and Renode configurations.
+- `ROADMAP.md`: Tracking progress and future milestones.
 
 ## Getting Started
-The base of this project is a UART echo implementation for the Cortex-M3 core on the Tang Nano 4K.
-See `src/UART_README.md` for more details on the original base project.
-See `SERIAL_PORT_ACCESS.md` for how to connect to the UART.
+Run `bash install.sh` to set up the toolchain.
+Run `bash run_tests.sh` to execute the verification suite.
