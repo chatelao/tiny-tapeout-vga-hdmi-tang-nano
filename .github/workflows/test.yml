@@ -18,5 +18,5 @@ jobs:
       - name: Run Tests
         run: bash run_tests.sh
 
-      - name: Compile Smallest TT VGA Project
-        run: bash compile_minimal.sh
+      - name: Compile All TT VGA Projects
+        run: bash examples/compile_all_projects.sh
