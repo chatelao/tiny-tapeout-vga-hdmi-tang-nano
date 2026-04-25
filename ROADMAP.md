@@ -14,3 +14,4 @@
 - [x] Toolchain installer (`install.sh`) and Cocotb test suite integration (`run_tests.sh`).
 - [x] Implement GitHub Actions for automated testing.
 - [x] Update project structure and documentation according to GEMINI.md.
+- [x] Add VGA Playground examples to `examples/tt_projects`.
