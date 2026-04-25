@@ -15,11 +15,12 @@ make -f cocotb_Makefile
 cd ..
 
 # 3. Synthesis Tests
-echo "--- Running Synthesis Test ---"
+echo "--- Running Synthesis Test (Main Project) ---"
 yosys -p "synth_gowin -top tt_um_vga_example -json tt_vga.json" src/tt_project.v src/hvsync_generator.v
 nextpnr-gowin --device GW1NSR-LV4CQN48PC7/I6 --family GW1NS-4 --json tt_vga.json --write tt_vga_pnr.json
-# Note: gowin_pack from apycula requires nextpnr-himbaechel which is not available in standard apt packages yet.
-# We skip bitstream generation for now but keep synthesis and P&R check.
 rm tt_vga.json tt_vga_pnr.json
+
+echo "--- Running Synthesis Test (Minimal VGA Project) ---"
+bash compile_minimal.sh
 
 echo "All tests passed successfully!"
