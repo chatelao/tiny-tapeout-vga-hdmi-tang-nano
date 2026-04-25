@@ -4,6 +4,7 @@
 - [x] Integrate `tt_um_vga_example` into the top-level design.
 - [x] Develop automated synthesis tests for the VGA project in CI.
 - [x] Compile smallest TT VGA project in CI.
+- [x] Compile all TT VGA projects in CI.
 - [ ] Implement VGA to HDMI conversion logic in Verilog.
 - [ ] Configure Renode to simulate the Tang Nano 4K (GW1NSR-LV4C) and verify binaries.
 - [ ] Expand the APB expansion logic to support full 8-bit TT address space.
