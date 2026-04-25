@@ -2,8 +2,9 @@ SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 
 VERILOG_SOURCES += $(PWD)/../src/tt_project.v
+VERILOG_SOURCES += $(PWD)/../src/hvsync_generator.v
 
-TOPLEVEL = tt_um_minimal_echo
+TOPLEVEL = tt_um_vga_example
 COCOTB_TEST_MODULES = test_tt_project
 
 include $(shell cocotb-config --makefiles)/Makefile.sim

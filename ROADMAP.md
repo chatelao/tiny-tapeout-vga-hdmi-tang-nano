@@ -1,8 +1,9 @@
 # ROADMAP
 
 ## Current Goals
+- [x] Integrate `tt_um_vga_example` into the top-level design.
+- [x] Develop automated synthesis tests for the VGA project in CI.
 - [ ] Implement VGA to HDMI conversion logic in Verilog.
-- [ ] Integrate `tt_um_minimal_echo` or other TT projects into the top-level design.
 - [ ] Configure Renode to simulate the Tang Nano 4K (GW1NSR-LV4C) and verify binaries.
 - [ ] Expand the APB expansion logic to support full 8-bit TT address space.
 - [ ] Develop automated E2E tests for video signal integrity.

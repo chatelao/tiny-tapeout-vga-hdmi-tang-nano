@@ -83,8 +83,8 @@ module tt_m3_wrapper (
     end
 
     // --- Tiny Tapeout Module Instantiation ---
-    // Note: Change 'tt_um_minimal_echo' to your actual TT module name
-    tt_um_minimal_echo tt_inst (
+    // Note: Change 'tt_um_vga_example' to your actual TT module name
+    tt_um_vga_example tt_inst (
         .ui_in  (ui_in),
         .uo_out (uo_out),
         .uio_in (uio_in),
