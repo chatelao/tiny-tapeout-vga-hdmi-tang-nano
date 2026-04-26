@@ -18,11 +18,14 @@ echo "--- Running Place and Route ---"
 nextpnr-gowin --device "$DEVICE" --family "$FAMILY" --json minimal_vga.json --write minimal_vga_pnr.json
 
 # 3. Bitstream Generation
-# Note: gowin_pack from apycula requires nextpnr-himbaechel which is not available in standard apt packages yet.
-# We skip bitstream generation for now but keep synthesis and P&R check.
-echo "--- skipping Bitstream Generation (requires nextpnr-himbaechel) ---"
+echo "--- Running Bitstream Generation ---"
+if gowin_pack -d "$FAMILY" -o minimal_vga.fs minimal_vga_pnr.json --allow_pinless_io; then
+    echo "Bitstream generation successful."
+else
+    echo "Warning: Bitstream generation failed (known toolchain issue). Keeping synth/PnR."
+fi
 
 # Cleanup
-rm -f minimal_vga.json minimal_vga_pnr.json
+rm -f minimal_vga.json minimal_vga_pnr.json minimal_vga.fs
 
 echo "Compilation of $TOP_MODULE finished."
