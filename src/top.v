@@ -5,7 +5,11 @@ module top (
     input  wire       uart0_rxd,    // Pin 19
     output wire       led_pin,             // LED
     input  wire       btn1_pin ,            // BTN-1
-    input  wire       btn2_pin             // BTN-2
+    input  wire       btn2_pin,             // BTN-2
+
+    // HDMI/DVI
+    output wire       tmds_clk_p,
+    output wire [2:0] tmds_d_p
 );
 
     wire [15:0] m3_gpio;
@@ -59,5 +63,9 @@ module top (
     */
 
     assign led_pin = btn1_pin ^ btn2_pin ^ uart0_txd;
+
+    // Temporary tie-off for HDMI pins to avoid synthesis errors
+    assign tmds_clk_p = 1'b0;
+    assign tmds_d_p   = 3'b000;
 
 endmodule

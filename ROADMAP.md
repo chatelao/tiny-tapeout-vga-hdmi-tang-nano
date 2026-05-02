@@ -1,13 +1,15 @@
 # ROADMAP
 
 ## Current Goals
-- [ ] Implement VGA to HDMI conversion logic in Verilog.
-- [ ] Configure Renode to simulate the Tang Nano 4K and verify binaries (Correct peripherals implemented).
-- [ ] Integrate an open-source HDMI transmitter core (e.g., from `nano4k_hdmi_tx`).
+- [ ] Implement a custom Renode peripheral model for the TT APB bridge.
 - [ ] Develop automated E2E tests for video signal integrity.
-- [ ] Implement a custom Renode peripheral for the TT APB bridge.
+- [ ] Implement the TMDS clocking logic (PLL for 5x/10x serialization clock).
+- [ ] Implement the OSER10-based serializer for Gowin GW1NSR-4C.
+- [ ] Integrate components into a top-level `hdmi_tx` module.
 
 ## Completed
+- [x] Implement the TMDS 8b10b encoder logic in `src/tmds_encoder.v`.
+- [x] Assign physical pins for HDMI TMDS pairs in `src/top.cst`.
 - [x] Expand the APB expansion logic to support full 8-bit TT address space.
 - [x] Integrate `tt_um_vga_example` into the top-level design.
 - [x] Develop automated synthesis tests for the VGA project in CI.
@@ -22,3 +24,4 @@
 - [x] Add VGA Playground examples to `examples/tt_projects`.
 - [x] Initialize Renode infrastructure placeholder.
 - [x] Fix test suite environment and synthesis scripts.
+- [x] Configure Renode to simulate the Tang Nano 4K and verify binaries (Correct peripherals implemented).
