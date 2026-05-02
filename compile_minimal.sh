@@ -19,7 +19,7 @@ nextpnr-gowin --device "$DEVICE" --family "$FAMILY" --json minimal_vga.json --wr
 
 # 3. Bitstream Generation
 echo "--- Running Bitstream Generation ---"
-if gowin_pack -d "$FAMILY" -o minimal_vga.fs minimal_vga_pnr.json --allow_pinless_io; then
+if gowin_pack -d "$FAMILY" -o minimal_vga.fs minimal_vga_pnr.json; then
     echo "Bitstream generation successful."
 else
     echo "Warning: Bitstream generation failed (known toolchain issue). Keeping synth/PnR."

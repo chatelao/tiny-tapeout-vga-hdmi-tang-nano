@@ -1,0 +1,21 @@
+// tang_nano_4k.repl
+// Gowin GW1NSR-LV4C (Tang Nano 4K) platform definition
+
+cpu: CPU.CortexM @ sysbus
+    cpuType: "cortex-m3"
+    nvic: nvic
+
+nvic: IRQControllers.NVIC @ sysbus 0xE000E000
+    priorityMask: 0x1F
+
+flash: Memory.MappedMemory @ sysbus 0x00000000
+    size: 0x8000 // 32K
+
+sram: Memory.MappedMemory @ sysbus 0x20000000
+    size: 0x5800 // 22K
+
+psram: Memory.MappedMemory @ sysbus 0xA0000000
+    size: 0x800000 // 8M
+
+uart0: UART.NS16450 @ sysbus 0x40000000
+    // Address based on common Gowin EMPU UART placement, to be verified.
