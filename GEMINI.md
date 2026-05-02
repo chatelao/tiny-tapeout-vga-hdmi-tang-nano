@@ -13,7 +13,7 @@
 - `/definitions` - Datasheets and Standards to be used, download and convert to `.md` on first time read.
 - `/examples` - Example data scripts
 - `/examples/tt_projects` - Example Tiny-Tapeout VGA FPGA projects.
-- `/test` - Unit, System and End-2-End test concepts and cases to be executed after each change. Use Renode to verify the binaries.
+- `/test` - Unit, System and End-2-End test concepts and cases to be executed after each change.
 - `/src` - Source files, only accepted if working and covered by tests.
 - `/.github/workflows` - For release tag publish the installer/binary.
 - `README.md` - Update overview of the product.
