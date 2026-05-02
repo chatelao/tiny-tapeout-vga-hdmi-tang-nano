@@ -63,21 +63,21 @@ module tt_m3_wrapper (
             uio_in  <= 8'h0;
             ctrl    <= 3'h0; // Reset active (rst_n=0), Ena=0, Clk=0
         end else if (PSEL && PENABLE && PWRITE) begin
-            case (PADDR[3:0])
-                4'h0: ui_in  <= PWDATA[7:0];
-                4'h4: uio_in <= PWDATA[7:0];
-                4'hC: ctrl   <= PWDATA[2:0];
+            case (PADDR[7:0])
+                8'h00: ui_in  <= PWDATA[7:0];
+                8'h04: uio_in <= PWDATA[7:0];
+                8'h0C: ctrl   <= PWDATA[2:0];
             endcase
         end
     end
 
     // --- APB Read Logic ---
     always @(*) begin
-        case (PADDR[3:0])
-            4'h0:    PRDATA = {24'h0, uo_out};
-            4'h4:    PRDATA = {24'h0, uio_out};
-            4'h8:    PRDATA = {24'h0, uio_oe};
-            4'hC:    PRDATA = {29'h0, ctrl};
+        case (PADDR[7:0])
+            8'h00:   PRDATA = {24'h0, uo_out};
+            8'h04:   PRDATA = {24'h0, uio_out};
+            8'h08:   PRDATA = {24'h0, uio_oe};
+            8'h0C:   PRDATA = {29'h0, ctrl};
             default: PRDATA = 32'h0;
         endcase
     end
