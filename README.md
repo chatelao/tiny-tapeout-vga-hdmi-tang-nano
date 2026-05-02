@@ -19,6 +19,16 @@ This project provides a hardware bridge to display Tiny Tapeout (TT) VGA designs
 - `/test`: Test suite including Cocotb and Renode configurations.
 - `ROADMAP.md`: Tracking progress and future milestones.
 
+## Tiny Tapeout APB Register Map
+The Cortex-M3 interacts with the Tiny Tapeout module via an APB bridge located at base address `0x40002400`.
+
+| Offset | Name     | Access | Description |
+|--------|----------|--------|-------------|
+| 0x00   | DATA     | R/W    | Write: `ui_in`, Read: `uo_out` |
+| 0x04   | UIO_DATA | R/W    | Write: `uio_in`, Read: `uio_out` |
+| 0x08   | UIO_OE   | R      | Read: `uio_oe` |
+| 0x0C   | CTRL     | R/W    | [0]=clk, [1]=rst_n (Active Low), [2]=ena |
+
 ## Getting Started
 Run `bash install.sh` to set up the toolchain.
 Run `bash run_tests.sh` to execute the verification suite.

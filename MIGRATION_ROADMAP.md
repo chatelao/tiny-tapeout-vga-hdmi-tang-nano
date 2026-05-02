@@ -5,8 +5,10 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 ## VGA to HDMI Integration
 - [x] Implement the TMDS 8b10b encoder logic in `src/tmds_encoder.v`.
 - [x] Assign physical pins for HDMI TMDS pairs in `src/top.cst`.
-- [ ] Implement the TMDS clocking logic (PLL for 5x/10x serialization clock).
-- [ ] Implement the OSER10-based serializer for Gowin GW1NSR-4C.
+- [ ] Implement a PLL module for HDMI clock generation (Pixel/Serial clocks).
+- [ ] Verify PLL clock outputs and lock signal in simulation.
+- [ ] Implement a 10:1 serializer module using Gowin OSER10 primitives.
+- [ ] Map serializer outputs to differential pairs in the top-level design.
 - [ ] Integrate components into a top-level `hdmi_tx` module.
 - [ ] Connect `tt_um_vga_example` signals to the `hdmi_tx` core.
 - [ ] Verify HDMI output timing and encoding via Cocotb simulation.
@@ -20,9 +22,9 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 
 ## APB Expansion & Bridge
 - [x] Expand `tt_wrapper.v` to support full 8-bit address decoding (preventing aliasing).
+- [x] Document the TT APB register map in `README.md`.
 - [ ] Update `m3_regs.h` with additional TT control/status registers if needed.
 - [ ] Implement firmware-based read-back verification for all TT registers.
-- [ ] Document the TT APB register map in `README.md`.
 
 ## Automated E2E & Verification
 - [ ] Develop a Cocotb test bench for the complete `top` module.

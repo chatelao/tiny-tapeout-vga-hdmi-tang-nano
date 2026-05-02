@@ -2,10 +2,10 @@
 
 ## Current Goals
 - [ ] Implement a custom Renode peripheral model for the TT APB bridge.
-- [ ] Develop automated E2E tests for video signal integrity.
-- [ ] Implement the TMDS clocking logic (PLL for 5x/10x serialization clock).
-- [ ] Implement the OSER10-based serializer for Gowin GW1NSR-4C.
+- [ ] Implement a PLL module for HDMI clock generation (Pixel/Serial clocks).
+- [ ] Implement a 10:1 serializer module using Gowin OSER10 primitives.
 - [ ] Integrate components into a top-level `hdmi_tx` module.
+- [ ] Develop automated E2E tests for video signal integrity.
 
 ## Completed
 - [x] Implement the TMDS 8b10b encoder logic in `src/tmds_encoder.v`.
