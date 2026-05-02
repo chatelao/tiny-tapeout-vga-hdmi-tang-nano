@@ -1,0 +1,16 @@
+
+using sysbus
+$name?="TangNano4K"
+
+mach create $name
+
+machine LoadPlatformDescription @test/tang_nano_4k.repl
+
+showAnalyzer uart0
+
+macro reset
+"""
+    sysbus LoadELF $elf
+"""
+
+runMacro $reset
