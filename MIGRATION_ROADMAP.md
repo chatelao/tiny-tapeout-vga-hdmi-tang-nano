@@ -3,11 +3,13 @@
 This document breaks down the high-level goals in `ROADMAP.md` into modest, feasible, and verifiable steps.
 
 ## VGA to HDMI Integration
-- [ ] Implement/Verify a basic DVI/TMDS encoder in Verilog.
-- [ ] Integrate `nano4k_hdmi_tx` core into the top-level design.
-- [ ] Connect VGA signals from the Tiny Tapeout module to the HDMI transmitter.
-- [ ] Verify HDMI output timing (e.g., 720x480@60Hz) via Cocotb simulation.
-- [ ] Assign physical pins for HDMI TMDS pairs in `top.cst`.
+- [x] Implement the TMDS 8b10b encoder logic in `src/tmds_encoder.v`.
+- [x] Assign physical pins for HDMI TMDS pairs in `src/top.cst`.
+- [ ] Implement the TMDS clocking logic (PLL for 5x/10x serialization clock).
+- [ ] Implement the OSER10-based serializer for Gowin GW1NSR-4C.
+- [ ] Integrate components into a top-level `hdmi_tx` module.
+- [ ] Connect `tt_um_vga_example` signals to the `hdmi_tx` core.
+- [ ] Verify HDMI output timing and encoding via Cocotb simulation.
 
 ## Renode Simulation
 - [x] Correct Renode platform definition (`.repl`) to match CMSDK peripherals.
