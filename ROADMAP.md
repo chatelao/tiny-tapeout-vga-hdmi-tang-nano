@@ -2,12 +2,13 @@
 
 ## Current Goals
 - [ ] Implement VGA to HDMI conversion logic in Verilog.
-- [ ] Configure Renode to simulate the Tang Nano 4K and verify binaries.
+- [ ] Configure Renode to simulate the Tang Nano 4K and verify binaries (Correct peripherals implemented).
 - [ ] Integrate an open-source HDMI transmitter core (e.g., from `nano4k_hdmi_tx`).
-- [ ] Expand the APB expansion logic to support full 8-bit TT address space.
 - [ ] Develop automated E2E tests for video signal integrity.
+- [ ] Implement a custom Renode peripheral for the TT APB bridge.
 
 ## Completed
+- [x] Expand the APB expansion logic to support full 8-bit TT address space.
 - [x] Integrate `tt_um_vga_example` into the top-level design.
 - [x] Develop automated synthesis tests for the VGA project in CI.
 - [x] Compile smallest TT VGA project in CI.
