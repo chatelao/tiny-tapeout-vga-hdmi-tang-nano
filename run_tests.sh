@@ -17,6 +17,15 @@ make -f cocotb_Makefile clean
 make -f cocotb_Makefile
 make -f Makefile.pll clean
 make -f Makefile.pll
+
+echo "--- Running Serializer Cocotb Test ---"
+rm -rf sim_build_serializer
+export PYTHONPATH=$PYTHONPATH:$(pwd)
+make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/hdmi_serializer.v $(pwd)/oser10_sim_model.v" \
+    TOPLEVEL=hdmi_serializer \
+    MODULE=test_serializer \
+    SIM_BUILD=sim_build_serializer
 cd ..
 
 # 3. Synthesis Tests

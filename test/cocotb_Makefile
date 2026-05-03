@@ -1,10 +1,11 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 
-VERILOG_SOURCES += $(PWD)/../src/tt_project.v
-VERILOG_SOURCES += $(PWD)/../src/hvsync_generator.v
+# Default sources, can be overridden
+VERILOG_SOURCES ?= $(PWD)/../src/tt_project.v $(PWD)/../src/hvsync_generator.v
 
-TOPLEVEL = tt_um_vga_example
-COCOTB_TEST_MODULES = test_tt_project
+# Default toplevel and module
+TOPLEVEL ?= tt_um_vga_example
+MODULE ?= test_tt_project
 
 include $(shell cocotb-config --makefiles)/Makefile.sim

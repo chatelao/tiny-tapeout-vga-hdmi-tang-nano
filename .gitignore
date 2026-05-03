@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 # Cocotb / Simulation
-sim_build/
+sim_build*/
 results.xml
 *.vvp
 *.vcd

@@ -3,11 +3,12 @@
 ## Current Goals
 - [ ] Define a basic Renode peripheral model for the TT APB bridge.
 - [ ] Verify APB bridge in Renode with UART echo firmware.
-- [x] Create behavioral PLL model for simulation.
-- [x] Implement Gowin `rPLL` hardware module.
-- [ ] Implement a 10:1 serializer module using Gowin OSER10 primitives.
+- [ ] Map serializer outputs to differential pairs in the top-level design.
+- [ ] Integrate components into a top-level `hdmi_tx` module.
+- [ ] Verify HDMI output timing and encoding via Cocotb simulation.
 
 ## Completed
+- [x] Implement a 10:1 serializer module using Gowin OSER10 primitives.
 - [x] Implement the TMDS 8b10b encoder logic in `src/tmds_encoder.v`.
 - [x] Assign physical pins for HDMI TMDS pairs in `src/top.cst`.
 - [x] Expand the APB expansion logic to support full 8-bit TT address space.
@@ -25,3 +26,5 @@
 - [x] Initialize Renode infrastructure placeholder.
 - [x] Fix test suite environment and synthesis scripts.
 - [x] Configure Renode to simulate the Tang Nano 4K and verify binaries (Correct peripherals implemented).
+- [x] Create behavioral PLL model for simulation.
+- [x] Implement Gowin `rPLL` hardware module.
