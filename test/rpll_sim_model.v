@@ -16,7 +16,7 @@ module rPLL #(
     parameter DUTYDA_SEL = "1000",
     parameter PSDA_SEL = "0000",
     parameter CLKOUTD_SRC = "CLKOUT",
-    parameter CLKOUTD_SEL = 2
+    parameter DYN_SDIV_SEL = 2
 )(
     input  wire CLKIN,
     input  wire RESET,
@@ -89,7 +89,7 @@ module rPLL #(
             d_count <= 0;
             CLKOUTD <= 0;
         end else begin
-            if (d_count >= (CLKOUTD_SEL / 2) - 1) begin
+            if (d_count >= (DYN_SDIV_SEL / 2) - 1) begin
                 CLKOUTD <= ~CLKOUTD;
                 d_count <= 0;
             end else begin
