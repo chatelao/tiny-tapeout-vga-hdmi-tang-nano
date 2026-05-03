@@ -25,8 +25,15 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 ## APB Expansion & Bridge
 - [x] Expand `tt_wrapper.v` to support full 8-bit address decoding (preventing aliasing).
 - [x] Document the TT APB register map in `README.md`.
+- [x] Verify TT APB bridge (`tt_m3_wrapper`) via Cocotb simulation.
 - [ ] Update `m3_regs.h` with additional TT control/status registers if needed.
 - [ ] Implement firmware-based read-back verification for all TT registers.
+
+## HDMI Audio Support
+- [ ] Design 1-bit PWM audio generator for 48kHz sampling.
+- [ ] Implement TERC4 encoder for HDMI Data Islands.
+- [ ] Implement HDMI Audio Sample packet generation.
+- [ ] Integrate Data Island periods into HDMI transmitter.
 
 ## Automated E2E & Verification
 - [ ] Develop a Cocotb test bench for the complete `top` module.
