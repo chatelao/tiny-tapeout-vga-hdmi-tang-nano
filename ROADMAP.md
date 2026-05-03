@@ -1,11 +1,11 @@
 # ROADMAP
 
 ## Current Goals
-- [ ] Implement a custom Renode peripheral model for the TT APB bridge.
-- [ ] Implement a PLL module for HDMI clock generation (Pixel/Serial clocks).
+- [ ] Define a basic Renode peripheral model for the TT APB bridge.
+- [ ] Verify APB bridge in Renode with UART echo firmware.
+- [ ] Create behavioral PLL model for simulation.
+- [ ] Implement Gowin `rPLL` hardware module.
 - [ ] Implement a 10:1 serializer module using Gowin OSER10 primitives.
-- [ ] Integrate components into a top-level `hdmi_tx` module.
-- [ ] Develop automated E2E tests for video signal integrity.
 
 ## Completed
 - [x] Implement the TMDS 8b10b encoder logic in `src/tmds_encoder.v`.
