@@ -26,6 +26,14 @@ make -f cocotb_Makefile \
     TOPLEVEL=hdmi_serializer \
     MODULE=test_serializer \
     SIM_BUILD=sim_build_serializer
+
+echo "--- Running HDMI TX Cocotb Test ---"
+rm -rf sim_build_hdmi_tx
+make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/hdmi_tx.v $(pwd)/../src/tmds_encoder.v $(pwd)/../src/hdmi_serializer.v $(pwd)/oser10_sim_model.v" \
+    TOPLEVEL=hdmi_tx \
+    MODULE=test_hdmi_tx \
+    SIM_BUILD=sim_build_hdmi_tx
 cd ..
 
 # 3. Synthesis Tests

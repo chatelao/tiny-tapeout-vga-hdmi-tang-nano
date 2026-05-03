@@ -1,13 +1,16 @@
 # ROADMAP
 
 ## Current Goals
-- [ ] Define a basic Renode peripheral model for the TT APB bridge.
+- [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
+- [ ] Integrate the TT APB bridge into `test/tang_nano_4k.repl`.
+- [ ] Develop a Renode test script to verify UART echo with the APB bridge.
 - [ ] Verify APB bridge in Renode with UART echo firmware.
-- [/] Map serializer outputs to differential pairs in the top-level design.
-- [ ] Verify HDMI output timing and encoding via Cocotb simulation.
-- [/] Implement a Cocotb test bench for `hdmi_tx`.
+- [ ] Implement audio support (1-bit PWM) in TMDS encoding.
 
 ## Completed
+- [x] Verify HDMI output timing and encoding via Cocotb simulation.
+- [x] Implement a Cocotb test bench for `hdmi_tx`.
+- [x] Map serializer outputs to differential pairs in the top-level design.
 - [x] Integrate components into a top-level `hdmi_tx` module.
 - [x] Implement a 10:1 serializer module using Gowin OSER10 primitives.
 - [x] Implement the TMDS 8b10b encoder logic in `src/tmds_encoder.v`.
