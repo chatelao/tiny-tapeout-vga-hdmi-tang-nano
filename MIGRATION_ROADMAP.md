@@ -10,7 +10,7 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 - [x] Verify PLL clock outputs and lock signal in simulation.
 - [x] Implement a 10:1 serializer module using Gowin OSER10 primitives.
 - [ ] Map serializer outputs to differential pairs in the top-level design.
-- [ ] Integrate components into a top-level `hdmi_tx` module.
+- [x] Integrate components into a top-level `hdmi_tx` module.
 - [ ] Connect `tt_um_vga_example` signals to the `hdmi_tx` core.
 - [ ] Verify HDMI output timing and encoding via Cocotb simulation.
 

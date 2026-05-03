@@ -4,10 +4,11 @@
 - [ ] Define a basic Renode peripheral model for the TT APB bridge.
 - [ ] Verify APB bridge in Renode with UART echo firmware.
 - [ ] Map serializer outputs to differential pairs in the top-level design.
-- [ ] Integrate components into a top-level `hdmi_tx` module.
 - [ ] Verify HDMI output timing and encoding via Cocotb simulation.
+- [ ] Implement a Cocotb test bench for `hdmi_tx`.
 
 ## Completed
+- [x] Integrate components into a top-level `hdmi_tx` module.
 - [x] Implement a 10:1 serializer module using Gowin OSER10 primitives.
 - [x] Implement the TMDS 8b10b encoder logic in `src/tmds_encoder.v`.
 - [x] Assign physical pins for HDMI TMDS pairs in `src/top.cst`.
