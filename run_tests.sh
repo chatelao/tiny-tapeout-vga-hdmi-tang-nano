@@ -37,6 +37,19 @@ make -f cocotb_Makefile \
     MODULE=test_hdmi_tx \
     SIM_BUILD=sim_build_hdmi_tx
 
+echo "--- Running HDMI ECC Cocotb Test ---"
+rm -rf sim_build_hdmi_header_ecc sim_build_hdmi_subpacket_ecc
+make -f cocotb_Makefile clean
+MODULE=test_hdmi_ecc TESTCASE=test_hdmi_header_ecc make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/hdmi_ecc.v" \
+    TOPLEVEL=hdmi_header_ecc \
+    SIM_BUILD=sim_build_hdmi_header_ecc
+make -f cocotb_Makefile clean
+MODULE=test_hdmi_ecc TESTCASE=test_hdmi_subpacket_ecc make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/hdmi_ecc.v" \
+    TOPLEVEL=hdmi_subpacket_ecc \
+    SIM_BUILD=sim_build_hdmi_subpacket_ecc
+
 echo "--- Running TT APB Wrapper Cocotb Test ---"
 rm -rf sim_build_tt_wrapper
 make -f cocotb_Makefile \
