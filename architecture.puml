@@ -1,0 +1,49 @@
+@startuml
+title Tang Nano 4K VGA-to-HDMI Architecture
+
+package "FPGA Top Level (top.v)" {
+    component [Gowin_EMPU_Top] as m3 <<Cortex-M3>>
+
+    package "Tiny Tapeout Infrastructure" {
+        component [tt_m3_wrapper] as wrapper
+        component [tt_um_vga_example] as tt_vga <<TT Module>>
+        component [hvsync_generator] as hvsync
+    }
+
+    package "HDMI Subsystem (Planned)" {
+        component [tmds_encoder] as enc_r <<Red>>
+        component [tmds_encoder] as enc_g <<Green>>
+        component [tmds_encoder] as enc_b <<Blue>>
+        component [OSER10] as oser <<Serializer>>
+    }
+
+    m3 -[#blue]-> wrapper : "APB Expansion Bus"
+    wrapper --> tt_vga : "Encapsulates"
+    tt_vga --> hvsync : "VGA Timing"
+
+    tt_vga -[#red]-> enc_r : "Pixel Data"
+    tt_vga -[#green]-> enc_g : "Pixel Data"
+    tt_vga -[#blue]-> enc_b : "Pixel Data"
+
+    hvsync --> enc_r : "HSync/VSync"
+
+    enc_r --> oser : "10b TMDS"
+    enc_g --> oser
+    enc_b --> oser
+
+    oser --> [HDMI Port] : "Differential Pairs"
+}
+
+note right of m3
+  Cortex-M3 handles
+  UART and system
+  configuration.
+end note
+
+note bottom of tt_vga
+  The active Tiny Tapeout
+  VGA project being
+  adapted to HDMI.
+end note
+
+@enduml
