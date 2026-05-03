@@ -34,6 +34,14 @@ make -f cocotb_Makefile \
     TOPLEVEL=hdmi_tx \
     MODULE=test_hdmi_tx \
     SIM_BUILD=sim_build_hdmi_tx
+
+echo "--- Running TT APB Wrapper Cocotb Test ---"
+rm -rf sim_build_tt_wrapper
+make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/tt_wrapper.v $(pwd)/../src/tt_project.v $(pwd)/../src/hvsync_generator.v" \
+    TOPLEVEL=tt_m3_wrapper \
+    MODULE=test_tt_wrapper \
+    SIM_BUILD=sim_build_tt_wrapper
 cd ..
 
 # 3. Synthesis Tests
