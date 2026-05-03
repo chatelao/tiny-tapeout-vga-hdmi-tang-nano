@@ -31,7 +31,7 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 ## HDMI Audio Support
 - [ ] Design 1-bit PWM audio generator for 48kHz sampling.
 - [x] Implement TERC4 encoder for HDMI Data Islands.
-- [ ] Research and document BCH ECC parity equations for HDMI packets.
+- [x] Research and document BCH ECC parity equations for HDMI packets.
 - [ ] Implement 24-bit Header ECC and 56-bit Subpacket ECC encoders.
 - [ ] Implement HDMI Packet Assembly logic for Data Islands.
 - [ ] Integrate Data Island periods into HDMI transmitter.
