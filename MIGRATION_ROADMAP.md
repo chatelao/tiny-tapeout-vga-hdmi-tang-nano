@@ -5,9 +5,9 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 ## VGA to HDMI Integration
 - [x] Implement the TMDS 8b10b encoder logic in `src/tmds_encoder.v`.
 - [x] Assign physical pins for HDMI TMDS pairs in `src/top.cst`.
-- [ ] Create behavioral PLL model for simulation.
-- [ ] Implement Gowin `rPLL` hardware module for HDMI clock generation (Pixel/Serial clocks).
-- [ ] Verify PLL clock outputs and lock signal in simulation.
+- [x] Create behavioral PLL model for simulation.
+- [x] Implement Gowin `rPLL` hardware module for HDMI clock generation (Pixel/Serial clocks).
+- [x] Verify PLL clock outputs and lock signal in simulation.
 - [ ] Implement a 10:1 serializer module using Gowin OSER10 primitives.
 - [ ] Map serializer outputs to differential pairs in the top-level design.
 - [ ] Integrate components into a top-level `hdmi_tx` module.

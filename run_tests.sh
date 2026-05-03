@@ -13,7 +13,10 @@ echo "--- Running Cocotb Simulation Tests ---"
 cd test
 export IVERILOG=iverilog
 export VVP=vvp
+make -f cocotb_Makefile clean
 make -f cocotb_Makefile
+make -f Makefile.pll clean
+make -f Makefile.pll
 cd ..
 
 # 3. Synthesis Tests
