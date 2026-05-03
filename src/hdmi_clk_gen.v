@@ -36,7 +36,7 @@ module hdmi_clk_gen (
         .PSDA_SEL("0000"),
         .DUTYDA_SEL("1000"),
         .CLKOUTD_SRC("CLKOUT"),
-        .CLKOUTD_SEL(10)     // SDIV = 10
+        .DYN_SDIV_SEL(10)     // SDIV = 10
     ) pll_inst (
         .CLKIN(clk_in),
         .CLKOUT(clkout_internal),

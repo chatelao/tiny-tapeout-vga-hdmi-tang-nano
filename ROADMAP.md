@@ -3,9 +3,9 @@
 ## Current Goals
 - [ ] Define a basic Renode peripheral model for the TT APB bridge.
 - [ ] Verify APB bridge in Renode with UART echo firmware.
-- [ ] Map serializer outputs to differential pairs in the top-level design.
+- [/] Map serializer outputs to differential pairs in the top-level design.
 - [ ] Verify HDMI output timing and encoding via Cocotb simulation.
-- [ ] Implement a Cocotb test bench for `hdmi_tx`.
+- [/] Implement a Cocotb test bench for `hdmi_tx`.
 
 ## Completed
 - [x] Integrate components into a top-level `hdmi_tx` module.
