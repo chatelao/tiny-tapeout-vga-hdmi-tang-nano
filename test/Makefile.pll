@@ -1,0 +1,10 @@
+SIM ?= icarus
+TOPLEVEL_LANG ?= verilog
+
+VERILOG_SOURCES += $(PWD)/../src/hdmi_clk_gen.v
+VERILOG_SOURCES += $(PWD)/rpll_sim_model.v
+
+TOPLEVEL = hdmi_clk_gen
+COCOTB_TEST_MODULES = test_hdmi_clk_gen
+
+include $(shell cocotb-config --makefiles)/Makefile.sim

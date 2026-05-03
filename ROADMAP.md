@@ -3,8 +3,8 @@
 ## Current Goals
 - [ ] Define a basic Renode peripheral model for the TT APB bridge.
 - [ ] Verify APB bridge in Renode with UART echo firmware.
-- [ ] Create behavioral PLL model for simulation.
-- [ ] Implement Gowin `rPLL` hardware module.
+- [x] Create behavioral PLL model for simulation.
+- [x] Implement Gowin `rPLL` hardware module.
 - [ ] Implement a 10:1 serializer module using Gowin OSER10 primitives.
 
 ## Completed
