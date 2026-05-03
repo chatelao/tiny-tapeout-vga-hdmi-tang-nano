@@ -8,4 +8,4 @@ VERILOG_SOURCES ?= $(PWD)/../src/tt_project.v $(PWD)/../src/hvsync_generator.v
 TOPLEVEL ?= tt_um_vga_example
 MODULE ?= test_tt_project
 
-include $(shell cocotb-config --makefiles)/Makefile.sim
+include $(shell python3 -m cocotb_tools.config --makefiles)/Makefile.sim
