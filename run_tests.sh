@@ -50,6 +50,14 @@ MODULE=test_hdmi_ecc TESTCASE=test_hdmi_subpacket_ecc make -f cocotb_Makefile \
     TOPLEVEL=hdmi_subpacket_ecc \
     SIM_BUILD=sim_build_hdmi_subpacket_ecc
 
+echo "--- Running HDMI Packet Packer Cocotb Test ---"
+rm -rf sim_build_hdmi_packet_packer
+make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/hdmi_packet_packer.v $(pwd)/../src/hdmi_ecc.v" \
+    TOPLEVEL=hdmi_packet_packer \
+    MODULE=test_hdmi_packet_packer \
+    SIM_BUILD=sim_build_hdmi_packet_packer
+
 echo "--- Running TT APB Wrapper Cocotb Test ---"
 rm -rf sim_build_tt_wrapper
 make -f cocotb_Makefile \
