@@ -5,7 +5,8 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 ## VGA to HDMI Integration
 - [x] Implement the TMDS 8b10b encoder logic in `src/tmds_encoder.v`.
 - [x] Assign physical pins for HDMI TMDS pairs in `src/top.cst`.
-- [ ] Implement a PLL module for HDMI clock generation (Pixel/Serial clocks).
+- [ ] Create behavioral PLL model for simulation.
+- [ ] Implement Gowin `rPLL` hardware module for HDMI clock generation (Pixel/Serial clocks).
 - [ ] Verify PLL clock outputs and lock signal in simulation.
 - [ ] Implement a 10:1 serializer module using Gowin OSER10 primitives.
 - [ ] Map serializer outputs to differential pairs in the top-level design.
@@ -15,7 +16,8 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 
 ## Renode Simulation
 - [x] Correct Renode platform definition (`.repl`) to match CMSDK peripherals.
-- [ ] Implement a custom Renode peripheral model (in C# or Python) for the TT APB bridge.
+- [ ] Define a basic Renode peripheral model for the TT APB bridge.
+- [ ] Verify APB bridge in Renode with UART echo firmware.
 - [ ] Create a Renode `.robot` test script to verify UART echo firmware.
 - [ ] Extend Renode simulation to verify TT module interaction via APB registers.
 - [ ] Integrate Renode verification into `run_tests.sh`.
