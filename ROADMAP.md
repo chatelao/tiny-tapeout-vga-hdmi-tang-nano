@@ -4,9 +4,11 @@
 - [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
 - [ ] Integrate the TT APB bridge into `test/tang_nano_4k.repl`.
 - [ ] Develop a Renode test script to verify UART echo with the APB bridge.
-- [ ] Implement HDMI Audio Sample packet generation and TERC4 encoding.
+- [ ] Implement HDMI Audio Sample packet generation.
+- [ ] Integrate Data Island periods into HDMI transmitter.
 
 ## Completed
+- [x] Implement TERC4 encoder for HDMI Data Islands.
 - [x] Verify TT APB bridge (`tt_m3_wrapper`) via Cocotb simulation.
 - [x] Verify HDMI output timing and encoding via Cocotb simulation.
 - [x] Implement a Cocotb test bench for `hdmi_tx`.

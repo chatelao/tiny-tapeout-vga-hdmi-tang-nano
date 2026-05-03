@@ -31,7 +31,7 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 
 ## HDMI Audio Support
 - [ ] Design 1-bit PWM audio generator for 48kHz sampling.
-- [ ] Implement TERC4 encoder for HDMI Data Islands.
+- [x] Implement TERC4 encoder for HDMI Data Islands.
 - [ ] Implement HDMI Audio Sample packet generation.
 - [ ] Integrate Data Island periods into HDMI transmitter.
 
