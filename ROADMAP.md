@@ -1,7 +1,7 @@
 # ROADMAP
 
 ## Current Goals
-- [ ] Research and document BCH ECC parity equations for HDMI packets.
+- [x] Research and document BCH ECC parity equations for HDMI packets.
 - [ ] Implement 24-bit Header ECC and 56-bit Subpacket ECC encoders.
 - [ ] Implement HDMI Packet Assembly logic for Data Islands.
 - [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
