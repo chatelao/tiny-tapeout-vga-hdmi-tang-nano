@@ -19,5 +19,8 @@ results.xml
 *.elf
 *.bin
 
+# Logs
+*.log
+
 # OS
 .DS_Store
