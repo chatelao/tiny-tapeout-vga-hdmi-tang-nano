@@ -1,11 +1,11 @@
 # ROADMAP
 
 ## Current Goals
-- [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
-- [ ] Integrate the TT APB bridge into `test/tang_nano_4k.repl`.
-- [ ] Develop a Renode test script to verify UART echo with the APB bridge.
-- [ ] Implement HDMI Audio Sample packet generation.
+- [ ] Implement BCH ECC encoders for HDMI packets.
+- [ ] Implement HDMI Packet Assembly logic for Data Islands.
 - [ ] Integrate Data Island periods into HDMI transmitter.
+- [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
+- [ ] Verify the TT APB bridge in Renode using a Robot test script.
 
 ## Completed
 - [x] Implement TERC4 encoder for HDMI Data Islands.
