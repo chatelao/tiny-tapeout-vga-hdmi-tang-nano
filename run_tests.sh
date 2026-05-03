@@ -2,6 +2,8 @@
 
 set -e
 
+# Ensure cocotb-config is in the PATH
+
 echo "Running all tests..."
 
 # 1. Structural Tests
