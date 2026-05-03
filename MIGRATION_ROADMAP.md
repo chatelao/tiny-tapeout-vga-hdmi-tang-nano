@@ -16,9 +16,8 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 
 ## Renode Simulation
 - [x] Correct Renode platform definition (`.repl`) to match CMSDK peripherals.
-- [ ] Define a basic Renode peripheral model for the TT APB bridge.
-- [ ] Verify APB bridge in Renode with UART echo firmware.
-- [ ] Create a Renode `.robot` test script to verify UART echo firmware.
+- [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
+- [ ] Verify the TT APB bridge in Renode using a Robot test script.
 - [ ] Extend Renode simulation to verify TT module interaction via APB registers.
 - [ ] Integrate Renode verification into `run_tests.sh`.
 
@@ -32,8 +31,10 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 ## HDMI Audio Support
 - [ ] Design 1-bit PWM audio generator for 48kHz sampling.
 - [x] Implement TERC4 encoder for HDMI Data Islands.
-- [ ] Implement HDMI Audio Sample packet generation.
+- [ ] Implement BCH ECC encoders for HDMI packets.
+- [ ] Implement HDMI Packet Assembly logic for Data Islands.
 - [ ] Integrate Data Island periods into HDMI transmitter.
+- [ ] Implement HDMI Audio Sample packet generation.
 
 ## Automated E2E & Verification
 - [ ] Develop a Cocotb test bench for the complete `top` module.
