@@ -1,13 +1,14 @@
 # ROADMAP
 
 ## Current Goals
-- [ ] Implement HDMI Data Island FSM (Guard bands and timing control).
-- [ ] Implement HDMI Data Island Framer (Integration of Packet Packer and Guard Bands).
+- [ ] Implement HDMI Data Island Framer (Multiplexing TERC4 and Packet Packer).
 - [ ] Integrate Data Island support into `hdmi_tx`.
 - [ ] Implement Audio InfoFrame generation.
+- [ ] Implement HDMI Audio Clock Regeneration (N/CTS) packet generation.
 - [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
 
 ## Completed
+- [x] Implement HDMI Data Island FSM (Preamble, Guard Bands, and Data timing).
 - [x] Implement HDMI Packet Packer (ECC calculation and bit mapping).
 - [x] Implement 24-bit Header ECC and 56-bit Subpacket ECC encoders.
 - [x] Research and document BCH ECC parity equations for HDMI packets.
