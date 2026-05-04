@@ -15,6 +15,8 @@ module hdmi_packet_packer (
     input  wire [55:0] sub1_data,
     input  wire [55:0] sub2_data,
     input  wire [55:0] sub3_data,
+    input  wire        hsync,
+    input  wire        vsync,
     input  wire [4:0]  pixel_index, // 0 to 31
     output wire [3:0]  chan0_out,
     output wire [3:0]  chan1_out,
@@ -64,9 +66,11 @@ module hdmi_packet_packer (
     wire [63:0] sub3   = {sub3_parity,   sub3_data};
 
     // Mapping to channels as per HDMI 1.3a Table 5-11
-    // Pixel i (0 to 31)
-    assign chan0_out = {sub2[pixel_index],    sub1[pixel_index],    sub0[pixel_index],    header[pixel_index]};
-    assign chan1_out = {sub3[pixel_index+32], sub2[pixel_index+32], sub1[pixel_index+32], sub0[pixel_index+32]};
-    assign chan2_out = {1'b0,                 1'b0,                 1'b0,                 sub3[pixel_index]};
+    // Channel 0: [0, VSync, HSync, Header bit]
+    assign chan0_out = {1'b0, vsync, hsync, header[pixel_index]};
+    // Channel 1: [Subpacket 1 bit i+32, Subpacket 0 bit i+32, Subpacket 1 bit i, Subpacket 0 bit i]
+    assign chan1_out = {sub1[pixel_index+32], sub0[pixel_index+32], sub1[pixel_index], sub0[pixel_index]};
+    // Channel 2: [Subpacket 3 bit i+32, Subpacket 2 bit i+32, Subpacket 3 bit i, Subpacket 2 bit i]
+    assign chan2_out = {sub3[pixel_index+32], sub2[pixel_index+32], sub3[pixel_index], sub2[pixel_index]};
 
 endmodule

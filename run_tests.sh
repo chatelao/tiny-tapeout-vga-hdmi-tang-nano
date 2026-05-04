@@ -66,6 +66,14 @@ make -f cocotb_Makefile \
     MODULE=test_hdmi_data_island_fsm \
     SIM_BUILD=sim_build_hdmi_data_island_fsm
 
+echo "--- Running HDMI Data Island Framer Cocotb Test ---"
+rm -rf sim_build_hdmi_data_island_framer
+make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/hdmi_data_island_framer.v $(pwd)/../src/hdmi_data_island_fsm.v $(pwd)/../src/hdmi_packet_packer.v $(pwd)/../src/hdmi_ecc.v $(pwd)/../src/terc4_encoder.v" \
+    TOPLEVEL=hdmi_data_island_framer \
+    MODULE=test_hdmi_data_island_framer \
+    SIM_BUILD=sim_build_hdmi_data_island_framer
+
 echo "--- Running TT APB Wrapper Cocotb Test ---"
 rm -rf sim_build_tt_wrapper
 make -f cocotb_Makefile \

@@ -19,25 +19,31 @@ async def test_hdmi_packet_packer(dut):
     dut.sub1_data.value = sub1_data
     dut.sub2_data.value = sub2_data
     dut.sub3_data.value = sub3_data
+    dut.hsync.value = 0
+    dut.vsync.value = 0
 
     await Timer(1, unit="ns")
 
-    # For Null packet (all 0s), parity should also be 0 since it's a linear code (XORs)
-    # Header parity = 0x00
-    # Subpacket parity = 0x00
-
+    # For Null packet (all 0s), parity should also be 0
     # Check pixel 0 mapping
     dut.pixel_index.value = 0
     await Timer(1, unit="ns")
 
-    # header[0] = 0, sub0[0] = 0, sub1[0] = 0, sub2[0] = 0 -> chan0 = 0000
+    # chan0 = {0, vsync, hsync, header[0]} = 0000
     assert dut.chan0_out.value == 0x0
-    # sub0[32] = 0, sub1[32] = 0, sub2[32] = 0, sub3[32] = 0 -> chan1 = 0000
+    # chan1 = {sub1[32], sub0[32], sub1[0], sub0[0]} = 0000
     assert dut.chan1_out.value == 0x0
-    # sub3[0] = 0 -> chan2 = 0000
+    # chan2 = {sub3[32], sub2[32], sub3[0], sub2[0]} = 0000
     assert dut.chan2_out.value == 0x0
 
-    # Test with some data
+    # Test with Sync signals
+    dut.hsync.value = 1
+    dut.vsync.value = 0
+    await Timer(1, unit="ns")
+    # chan0 = {0, 0, 1, 0} = 0x2
+    assert dut.chan0_out.value == 0x2
+
+    # Test with data
     header_data = 0x123456
     sub0_data = 0x0123456789ABCD
     sub1_data = 0x11223344556677
@@ -51,10 +57,6 @@ async def test_hdmi_packet_packer(dut):
     dut.sub3_data.value = sub3_data
 
     await Timer(1, unit="ns")
-
-    # Parity will be calculated by the module
-    # We can check the mapping logic itself by reading internal signals if needed,
-    # or just trust the ECC modules (which are tested separately) and check bit positions.
 
     header_parity = int(dut.ecc_header.parity.value)
     sub0_parity = int(dut.ecc_sub0.parity.value)
@@ -72,26 +74,31 @@ async def test_hdmi_packet_packer(dut):
         dut.pixel_index.value = i
         await Timer(1, unit="ns")
 
-        # chan0_out = {sub2[i], sub1[i], sub0[i], header[i]}
+        # chan0_out = {1'b0, vsync, hsync, header[i]}
         expected_chan0 = (
-            ((sub2_full >> i) & 1) << 3 |
-            ((sub1_full >> i) & 1) << 2 |
-            ((sub0_full >> i) & 1) << 1 |
+            (0 << 3) |
+            (int(dut.vsync.value) << 2) |
+            (int(dut.hsync.value) << 1) |
             ((header_full >> i) & 1)
         )
         assert int(dut.chan0_out.value) == expected_chan0
 
-        # chan1_out = {sub3[i+32], sub2[i+32], sub1[i+32], sub0[i+32]}
+        # chan1_out = {sub1[i+32], sub0[i+32], sub1[i], sub0[i]}
         expected_chan1 = (
-            ((sub3_full >> (i+32)) & 1) << 3 |
-            ((sub2_full >> (i+32)) & 1) << 2 |
-            ((sub1_full >> (i+32)) & 1) << 1 |
-            ((sub0_full >> (i+32)) & 1)
+            ((sub1_full >> (i+32)) & 1) << 3 |
+            ((sub0_full >> (i+32)) & 1) << 2 |
+            ((sub1_full >> i) & 1) << 1 |
+            ((sub0_full >> i) & 1)
         )
         assert int(dut.chan1_out.value) == expected_chan1
 
-        # chan2_out = {1'b0, 1'b0, 1'b0, sub3[i]}
-        expected_chan2 = (sub3_full >> i) & 1
+        # chan2_out = {sub3[i+32], sub2[i+32], sub3[i], sub2[i]}
+        expected_chan2 = (
+            ((sub3_full >> (i+32)) & 1) << 3 |
+            ((sub2_full >> (i+32)) & 1) << 2 |
+            ((sub3_full >> i) & 1) << 1 |
+            ((sub2_full >> i) & 1)
+        )
         assert int(dut.chan2_out.value) == expected_chan2
 
     print("HDMI Packet Packer test passed!")

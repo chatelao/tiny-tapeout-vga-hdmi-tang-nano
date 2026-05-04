@@ -1,7 +1,7 @@
 # ROADMAP
 
 ## Current Goals
-- [ ] Implement HDMI Data Island Framer (Multiplexing TERC4 and Packet Packer).
+- [x] Implement HDMI Data Island Framer (Multiplexing TERC4 and Packet Packer).
 - [ ] Integrate Data Island support into `hdmi_tx`.
 - [ ] Implement Audio InfoFrame generation.
 - [ ] Implement HDMI Audio Clock Regeneration (N/CTS) packet generation.
