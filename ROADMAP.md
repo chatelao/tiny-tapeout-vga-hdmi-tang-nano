@@ -2,10 +2,10 @@
 
 ## Current Goals
 - [ ] Research and document HDMI ACR and InfoFrame bit layouts.
-- [ ] Implement HDMI AVI InfoFrame generation.
+- [ ] Implement InfoFrame Checksum calculation logic.
+- [ ] Implement basic APB register logic in Renode Python model.
+- [ ] Define packet interface and basic arbiter for Data Island.
 - [ ] Implement HDMI Audio Clock Regeneration (ACR) packet generation.
-- [ ] Implement Data Island Packet Scheduler.
-- [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
 
 ## Completed
 - [x] Implement HDMI Data Island FSM (Preamble, Guard Bands, and Data timing).
