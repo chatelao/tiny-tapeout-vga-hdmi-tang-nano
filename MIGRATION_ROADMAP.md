@@ -34,7 +34,7 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 - [x] Research and document BCH ECC parity equations for HDMI packets.
 - [x] Implement 24-bit Header ECC and 56-bit Subpacket ECC encoders.
 - [x] Implement HDMI Data Island FSM (Preamble, Guard Bands, and Data timing).
-- [ ] Implement HDMI Data Island Framer (Multiplexing TERC4 and Packet Packer).
+- [x] Implement HDMI Data Island Framer (Multiplexing TERC4 and Packet Packer).
 - [ ] Integrate Data Island support into `hdmi_tx`.
 - [ ] Implement HDMI Audio Sample packet generation.
 
