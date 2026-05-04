@@ -106,6 +106,14 @@ make -f cocotb_Makefile \
     MODULE=test_hdmi_scheduler \
     SIM_BUILD=sim_build_hdmi_scheduler
 
+echo "--- Running Audio PWM Cocotb Test ---"
+rm -rf sim_build_audio_pwm
+make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/audio_pwm.v" \
+    TOPLEVEL=audio_pwm \
+    MODULE=test_audio_pwm \
+    SIM_BUILD=sim_build_audio_pwm
+
 echo "--- Running TT APB Wrapper Cocotb Test ---"
 rm -rf sim_build_tt_wrapper
 make -f cocotb_Makefile \

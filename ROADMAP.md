@@ -6,9 +6,10 @@
 - [x] Implement AVI InfoFrame generator for 640x480p.
 - [x] Implement HDMI Data Island Scheduler (Interface, Arbiter, and Trigger logic).
 - [ ] Implement basic APB register logic in Renode Python model.
-- [ ] Implement 1-bit PWM audio generator for 48kHz sampling.
+- [ ] Implement HDMI Audio Sample packet generation.
 
 ## Completed
+- [x] Implement 1-bit PWM audio generator for 48kHz sampling.
 - [x] Implement HDMI Audio Clock Regeneration (ACR) packet generation.
 - [x] Implement HDMI Data Island FSM (Preamble, Guard Bands, and Data timing).
 - [x] Implement HDMI Packet Packer (ECC calculation and bit mapping).
