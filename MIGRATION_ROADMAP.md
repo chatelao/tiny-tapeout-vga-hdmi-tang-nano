@@ -31,8 +31,8 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 - [ ] Implement firmware-based read-back verification for all TT registers.
 
 ## HDMI Audio & Data Island Packets
-- [ ] Research and document HDMI ACR and InfoFrame byte layouts.
-- [ ] Implement InfoFrame Checksum calculation logic.
+- [x] Research and document HDMI ACR and InfoFrame byte layouts.
+- [x] Implement InfoFrame Checksum calculation logic.
 - [ ] Implement AVI InfoFrame generator for 640x480p.
 - [ ] Implement Audio Clock Regeneration (ACR) packet generator.
 - [ ] Define Data Island Packet interface and basic arbiter.
