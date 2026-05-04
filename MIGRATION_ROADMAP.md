@@ -35,9 +35,9 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 - [x] Implement InfoFrame Checksum calculation logic.
 - [x] Implement AVI InfoFrame generator for 640x480p.
 - [x] Implement Audio Clock Regeneration (ACR) packet generator.
-- [ ] Define Data Island Packet interface and basic arbiter.
-- [ ] Implement scanline-based trigger logic for Data Island packets.
-- [ ] Multiplex AVI InfoFrame and ACR packets in the scheduler.
+- [x] Define Data Island Packet interface and basic arbiter.
+- [x] Implement scanline-based trigger logic for Data Island packets.
+- [x] Multiplex AVI InfoFrame and ACR packets in the scheduler.
 - [ ] Design 1-bit PWM audio generator for 48kHz sampling.
 - [x] Implement TERC4 encoder for HDMI Data Islands.
 - [x] Research and document BCH ECC parity equations for HDMI packets.

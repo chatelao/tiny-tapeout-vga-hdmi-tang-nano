@@ -62,6 +62,27 @@ module top (
     wire [7:0] vga_g = {tt_uo_out[1], tt_uo_out[5], 6'b0};
     wire [7:0] vga_b = {tt_uo_out[2], tt_uo_out[6], 6'b0};
 
+    // --- HDMI Data Island Scheduler ---
+    wire        di_start;
+    wire [23:0] di_header;
+    wire [55:0] di_sub0, di_sub1, di_sub2, di_sub3;
+    wire        di_active;
+
+    hdmi_data_island_scheduler di_scheduler_inst (
+        .clk(clk_pixel),
+        .reset(~pll_lock),
+        .vde(vga_vde),
+        .hsync(vga_hsync),
+        .vsync(vga_vsync),
+        .di_start(di_start),
+        .di_header(di_header),
+        .di_sub0(di_sub0),
+        .di_sub1(di_sub1),
+        .di_sub2(di_sub2),
+        .di_sub3(di_sub3),
+        .di_active(di_active)
+    );
+
     // --- HDMI Transmitter ---
     hdmi_tx hdmi_tx_inst (
         .clk_pixel(clk_pixel),
@@ -73,13 +94,13 @@ module top (
         .hsync(vga_hsync),
         .vsync(vga_vsync),
         .vde(vga_vde),
-        .di_start(1'b0),
-        .di_header(24'b0),
-        .di_sub0(56'b0),
-        .di_sub1(56'b0),
-        .di_sub2(56'b0),
-        .di_sub3(56'b0),
-        .di_active(),
+        .di_start(di_start),
+        .di_header(di_header),
+        .di_sub0(di_sub0),
+        .di_sub1(di_sub1),
+        .di_sub2(di_sub2),
+        .di_sub3(di_sub3),
+        .di_active(di_active),
         .ser_clk(tmds_clk_p),
         .ser_d0(tmds_d_p[0]),
         .ser_d1(tmds_d_p[1]),

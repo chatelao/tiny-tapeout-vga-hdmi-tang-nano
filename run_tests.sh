@@ -98,6 +98,14 @@ make -f cocotb_Makefile \
     MODULE=test_hdmi_acr_packet \
     SIM_BUILD=sim_build_hdmi_acr_packet
 
+echo "--- Running HDMI Scheduler Cocotb Test ---"
+rm -rf sim_build_hdmi_scheduler
+make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/hdmi_data_island_scheduler.v $(pwd)/../src/hdmi_avi_infoframe.v $(pwd)/../src/hdmi_acr_packet.v $(pwd)/../src/hdmi_infoframe_checksum.v" \
+    TOPLEVEL=hdmi_data_island_scheduler \
+    MODULE=test_hdmi_scheduler \
+    SIM_BUILD=sim_build_hdmi_scheduler
+
 echo "--- Running TT APB Wrapper Cocotb Test ---"
 rm -rf sim_build_tt_wrapper
 make -f cocotb_Makefile \
