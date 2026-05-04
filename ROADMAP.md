@@ -1,16 +1,16 @@
 # ROADMAP
 
 ## Current Goals
-- [x] Research and document BCH ECC parity equations for HDMI packets.
-- [x] Implement 24-bit Header ECC and 56-bit Subpacket ECC encoders.
-- [x] Implement HDMI Packet Packer (ECC calculation and bit mapping).
-- [ ] Implement HDMI Data Island State Machine (Guard bands, packet streaming).
+- [ ] Implement HDMI Data Island FSM (Guard bands and timing control).
+- [ ] Implement HDMI Data Island Framer (Integration of Packet Packer and Guard Bands).
 - [ ] Integrate Data Island support into `hdmi_tx`.
 - [ ] Implement Audio InfoFrame generation.
 - [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
-- [ ] Verify the TT APB bridge in Renode using a Robot test script.
 
 ## Completed
+- [x] Implement HDMI Packet Packer (ECC calculation and bit mapping).
+- [x] Implement 24-bit Header ECC and 56-bit Subpacket ECC encoders.
+- [x] Research and document BCH ECC parity equations for HDMI packets.
 - [x] Implement TERC4 encoder for HDMI Data Islands.
 - [x] Verify TT APB bridge (`tt_m3_wrapper`) via Cocotb simulation.
 - [x] Verify HDMI output timing and encoding via Cocotb simulation.
