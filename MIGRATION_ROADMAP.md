@@ -16,11 +16,11 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 
 ## Renode Simulation
 - [x] Correct Renode platform definition (`.repl`) to match CMSDK peripherals.
-- [ ] Implement basic APB register logic in Renode Python model.
-- [ ] Define the Python peripheral class for the Tiny Tapeout APB bridge in Renode.
-- [ ] Implement register read/write logic in the Renode model matching `tt_wrapper.v`.
-- [ ] Integrate a behavioral model of the TT design into the Renode peripheral.
-- [ ] Create a Robot test script to verify M3-to-TT interaction in Renode.
+- [ ] Implement APB register logic in a Python peripheral script for Renode.
+- [ ] Map the Python peripheral to the APB bus at `0x40002400` in `tang_nano_4k.repl`.
+- [ ] Implement register read/write logic in the Python model matching `tt_wrapper.v` (DATA, UIO_DATA, UIO_OE, CTRL).
+- [ ] Integrate a behavioral model of the TT design (e.g., a simple counter or passthrough) into the Renode peripheral.
+- [ ] Create a Robot test script to verify M3-to-TT interaction by reading/writing registers in Renode.
 - [ ] Integrate Renode verification into `run_tests.sh`.
 
 ## APB Expansion & Bridge
@@ -33,7 +33,7 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 ## HDMI Audio & Data Island Packets
 - [x] Research and document HDMI ACR and InfoFrame byte layouts.
 - [x] Implement InfoFrame Checksum calculation logic.
-- [ ] Implement AVI InfoFrame generator for 640x480p.
+- [x] Implement AVI InfoFrame generator for 640x480p.
 - [ ] Implement Audio Clock Regeneration (ACR) packet generator.
 - [ ] Define Data Island Packet interface and basic arbiter.
 - [ ] Implement scanline-based trigger logic for Data Island packets.
