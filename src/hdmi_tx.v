@@ -17,6 +17,15 @@ module hdmi_tx (
     input  wire       hsync,
     input  wire       vsync,
     input  wire       vde,
+    // Data Island Interface
+    input  wire        di_start,
+    input  wire [23:0] di_header,
+    input  wire [55:0] di_sub0,
+    input  wire [55:0] di_sub1,
+    input  wire [55:0] di_sub2,
+    input  wire [55:0] di_sub3,
+    output wire        di_active,
+    // Serial Outputs
     output wire       ser_clk,
     output wire       ser_d0,
     output wire       ser_d1,
@@ -26,6 +35,28 @@ module hdmi_tx (
     wire [9:0] tmds_d0;
     wire [9:0] tmds_d1;
     wire [9:0] tmds_d2;
+
+    wire [9:0] di_d0;
+    wire [9:0] di_d1;
+    wire [9:0] di_d2;
+
+    // Data Island Framer
+    hdmi_data_island_framer di_framer_inst (
+        .clk(clk_pixel),
+        .reset(reset),
+        .start(di_start),
+        .header_data(di_header),
+        .sub0_data(di_sub0),
+        .sub1_data(di_sub1),
+        .sub2_data(di_sub2),
+        .sub3_data(di_sub3),
+        .hsync(hsync),
+        .vsync(vsync),
+        .chan0_tmds(di_d0),
+        .chan1_tmds(di_d1),
+        .chan2_tmds(di_d2),
+        .active(di_active)
+    );
 
     // TMDS Encoders
     tmds_encoder enc_blue (
@@ -55,14 +86,19 @@ module hdmi_tx (
         .tmds(tmds_d2)
     );
 
+    // Multiplex between Video/Control and Data Island
+    wire [9:0] mux_d0 = (vde) ? tmds_d0 : (di_active ? di_d0 : tmds_d0);
+    wire [9:0] mux_d1 = (vde) ? tmds_d1 : (di_active ? di_d1 : tmds_d1);
+    wire [9:0] mux_d2 = (vde) ? tmds_d2 : (di_active ? di_d2 : tmds_d2);
+
     // Serializer
     hdmi_serializer serializer_inst (
         .clk_pixel(clk_pixel),
         .clk_x10(clk_x10),
         .reset(reset),
-        .tmds_d0(tmds_d0),
-        .tmds_d1(tmds_d1),
-        .tmds_d2(tmds_d2),
+        .tmds_d0(mux_d0),
+        .tmds_d1(mux_d1),
+        .tmds_d2(mux_d2),
         .tmds_clk(10'b1111100000),
         .ser_d0(ser_d0),
         .ser_d1(ser_d1),

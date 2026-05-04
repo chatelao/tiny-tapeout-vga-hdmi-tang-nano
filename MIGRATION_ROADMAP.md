@@ -35,7 +35,7 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 - [x] Implement 24-bit Header ECC and 56-bit Subpacket ECC encoders.
 - [x] Implement HDMI Data Island FSM (Preamble, Guard Bands, and Data timing).
 - [x] Implement HDMI Data Island Framer (Multiplexing TERC4 and Packet Packer).
-- [ ] Integrate Data Island support into `hdmi_tx`.
+- [x] Integrate Data Island support into `hdmi_tx`.
 - [ ] Implement HDMI Audio Sample packet generation.
 
 ## Automated E2E & Verification
