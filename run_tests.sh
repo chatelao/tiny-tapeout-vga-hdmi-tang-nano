@@ -74,6 +74,14 @@ make -f cocotb_Makefile \
     MODULE=test_hdmi_data_island_framer \
     SIM_BUILD=sim_build_hdmi_data_island_framer
 
+echo "--- Running HDMI InfoFrame Checksum Cocotb Test ---"
+rm -rf sim_build_hdmi_checksum
+make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/hdmi_infoframe_checksum.v" \
+    TOPLEVEL=hdmi_infoframe_checksum \
+    MODULE=test_hdmi_checksum \
+    SIM_BUILD=sim_build_hdmi_checksum
+
 echo "--- Running TT APB Wrapper Cocotb Test ---"
 rm -rf sim_build_tt_wrapper
 make -f cocotb_Makefile \
