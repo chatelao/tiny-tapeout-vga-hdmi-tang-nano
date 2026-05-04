@@ -4,8 +4,8 @@
 - [x] Research and document HDMI ACR and InfoFrame bit layouts.
 - [x] Implement InfoFrame Checksum calculation logic.
 - [x] Implement AVI InfoFrame generator for 640x480p.
+- [x] Implement HDMI Data Island Scheduler (Interface, Arbiter, and Trigger logic).
 - [ ] Implement basic APB register logic in Renode Python model.
-- [ ] Define packet interface and basic arbiter for Data Island.
 - [ ] Implement 1-bit PWM audio generator for 48kHz sampling.
 
 ## Completed
