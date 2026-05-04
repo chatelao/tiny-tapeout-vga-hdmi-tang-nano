@@ -1,13 +1,11 @@
 # ROADMAP
 
 ## Current Goals
-- [x] Implement HDMI Data Island Framer (Multiplexing TERC4 and Packet Packer).
-- [x] Integrate Data Island support into `hdmi_tx`.
-- [ ] Implement Audio InfoFrame generation.
-- [ ] Implement HDMI Audio Clock Regeneration (N/CTS) packet generation.
+- [ ] Research and document HDMI ACR and InfoFrame bit layouts.
+- [ ] Implement HDMI AVI InfoFrame generation.
+- [ ] Implement HDMI Audio Clock Regeneration (ACR) packet generation.
+- [ ] Implement Data Island Packet Scheduler.
 - [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
-- [ ] Implement HDMI Audio Sample packet generation.
-- [ ] Design 1-bit PWM audio generator for 48kHz sampling.
 
 ## Completed
 - [x] Implement HDMI Data Island FSM (Preamble, Guard Bands, and Data timing).

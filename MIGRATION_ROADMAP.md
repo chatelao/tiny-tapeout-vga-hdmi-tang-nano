@@ -16,9 +16,10 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 
 ## Renode Simulation
 - [x] Correct Renode platform definition (`.repl`) to match CMSDK peripherals.
-- [ ] Create a Python-based Renode peripheral model for the TT APB bridge.
-- [ ] Verify the TT APB bridge in Renode using a Robot test script.
-- [ ] Extend Renode simulation to verify TT module interaction via APB registers.
+- [ ] Define the Python peripheral class for the Tiny Tapeout APB bridge in Renode.
+- [ ] Implement register read/write logic in the Renode model matching `tt_wrapper.v`.
+- [ ] Integrate a behavioral model of the TT design into the Renode peripheral.
+- [ ] Create a Robot test script to verify M3-to-TT interaction in Renode.
 - [ ] Integrate Renode verification into `run_tests.sh`.
 
 ## APB Expansion & Bridge
@@ -28,7 +29,12 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 - [ ] Update `m3_regs.h` with additional TT control/status registers if needed.
 - [ ] Implement firmware-based read-back verification for all TT registers.
 
-## HDMI Audio Support
+## HDMI Audio & Data Island Packets
+- [ ] Research and document HDMI ACR (Type 0x01) and InfoFrame (AVI/Audio) byte layouts.
+- [ ] Implement InfoFrame Checksum calculation logic.
+- [ ] Implement AVI InfoFrame generator (Type 0x82) for 640x480p.
+- [ ] Implement Audio Clock Regeneration (ACR) packet generator (Type 0x01).
+- [ ] Implement a Data Island Packet Scheduler to multiplex multiple packet types.
 - [ ] Design 1-bit PWM audio generator for 48kHz sampling.
 - [x] Implement TERC4 encoder for HDMI Data Islands.
 - [x] Research and document BCH ECC parity equations for HDMI packets.
