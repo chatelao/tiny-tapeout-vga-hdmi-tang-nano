@@ -90,6 +90,14 @@ make -f cocotb_Makefile \
     MODULE=test_hdmi_avi_infoframe \
     SIM_BUILD=sim_build_hdmi_avi_infoframe
 
+echo "--- Running HDMI ACR Packet Cocotb Test ---"
+rm -rf sim_build_hdmi_acr_packet
+make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/hdmi_acr_packet.v" \
+    TOPLEVEL=hdmi_acr_packet \
+    MODULE=test_hdmi_acr_packet \
+    SIM_BUILD=sim_build_hdmi_acr_packet
+
 echo "--- Running TT APB Wrapper Cocotb Test ---"
 rm -rf sim_build_tt_wrapper
 make -f cocotb_Makefile \
