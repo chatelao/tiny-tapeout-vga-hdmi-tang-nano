@@ -58,6 +58,14 @@ make -f cocotb_Makefile \
     MODULE=test_hdmi_packet_packer \
     SIM_BUILD=sim_build_hdmi_packet_packer
 
+echo "--- Running HDMI Data Island FSM Cocotb Test ---"
+rm -rf sim_build_hdmi_data_island_fsm
+make -f cocotb_Makefile \
+    VERILOG_SOURCES="$(pwd)/../src/hdmi_data_island_fsm.v" \
+    TOPLEVEL=hdmi_data_island_fsm \
+    MODULE=test_hdmi_data_island_fsm \
+    SIM_BUILD=sim_build_hdmi_data_island_fsm
+
 echo "--- Running TT APB Wrapper Cocotb Test ---"
 rm -rf sim_build_tt_wrapper
 make -f cocotb_Makefile \
