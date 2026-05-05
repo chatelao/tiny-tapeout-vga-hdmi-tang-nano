@@ -16,6 +16,7 @@ This document breaks down the high-level goals in `ROADMAP.md` into modest, feas
 
 ## Renode Simulation
 - [x] Correct Renode platform definition (`.repl`) to match CMSDK peripherals.
+- [ ] Create a minimal Python peripheral template for Renode that can be loaded in `tang_nano_4k.resc`.
 - [ ] Implement APB register logic in a Python peripheral script for Renode.
 - [ ] Map the Python peripheral to the APB bus at `0x40002400` in `tang_nano_4k.repl`.
 - [ ] Implement register read/write logic in the Python model matching `tt_wrapper.v` (DATA, UIO_DATA, UIO_OE, CTRL).

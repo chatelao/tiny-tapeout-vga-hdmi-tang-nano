@@ -5,6 +5,8 @@
 - [x] Implement InfoFrame Checksum calculation logic.
 - [x] Implement AVI InfoFrame generator for 640x480p.
 - [x] Implement HDMI Data Island Scheduler (Interface, Arbiter, and Trigger logic).
+- [ ] Create a minimal Python peripheral template for Renode.
+- [ ] Research and document HDMI Audio Sample Packet (Type 0x02) layout.
 - [ ] Implement basic APB register logic in Renode Python model.
 - [ ] Implement HDMI Audio Sample packet generation.
 
