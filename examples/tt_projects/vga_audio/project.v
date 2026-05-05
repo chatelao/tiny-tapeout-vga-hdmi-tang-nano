@@ -2,7 +2,8 @@
  * VGA and Audio Example for Tiny Tapeout
  *
  * This project generates a simple VGA pattern and a square wave audio signal.
- * The audio frequency can be controlled using the dedicated inputs (ui_in).
+ * The audio frequency changes automatically over time and can be further
+ * offset using the dedicated inputs (ui_in).
  *
  * Copyright (c) 2024 Jules
  * SPDX-License-Identifier: Apache-2.0
@@ -55,13 +56,23 @@ module tt_um_vga_audio(
   // TinyVGA PMOD: {hsync, B0, G0, R0, vsync, B1, G1, R1}
   assign uo_out = {hsync, B[0], G[0], R[0], vsync, B[1], G[1], R[1]};
 
+  // Automatic frequency sweep logic
+  reg [7:0] sweep_counter;
+  always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      sweep_counter <= 0;
+    end else if (h_count == 0 && v_count == 0) begin
+      sweep_counter <= sweep_counter + 1'b1;
+    end
+  end
+
   // Audio generation: Square wave
   reg [16:0] audio_counter;
   reg audio_out;
-  // Use ui_in to control frequency.
-  // Period is (ui_in << 8) + 2048 cycles.
-  // Period is now 17 bits to avoid overflow (max 0xFF00 + 0x0800 = 0x10700).
-  wire [16:0] audio_period = {1'b0, ui_in, 8'h00} + 17'h00800;
+  // Use ui_in and sweep_counter to control frequency.
+  wire [7:0] combined_freq = ui_in + sweep_counter;
+  // Period is (combined_freq << 8) + 2048 cycles.
+  wire [16:0] audio_period = {1'b0, combined_freq, 8'h00} + 17'h00800;
 
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin

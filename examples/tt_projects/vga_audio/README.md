@@ -5,7 +5,7 @@ This example demonstrates generating both VGA video and square wave audio on a T
 ## Features
 
 - **640x480 VGA Output**: Generates standard VGA timing signals and a simple color bar pattern.
-- **Controlled Audio**: Generates a square wave audio signal. The frequency of the signal is adjustable using the `ui_in` inputs.
+- **Controlled Audio**: Generates a square wave audio signal. The frequency of the signal changes automatically over time (sweep) and can be further offset using the `ui_in` inputs.
 - **HDMI Compatibility**: Includes a Video Data Enable (VDE) signal on `uio_out[0]`, making it compatible with the project's HDMI transmitter integration.
 
 ## Pinout
@@ -25,4 +25,4 @@ This example demonstrates generating both VGA video and square wave audio on a T
 - `uio_out[0]`: Video Data Enable (VDE)
 
 ### Inputs (`ui_in`)
-- `ui_in[7:0]`: Controls the audio frequency (period is proportional to the input value).
+- `ui_in[7:0]`: Provides a frequency offset for the automatic audio sweep.
