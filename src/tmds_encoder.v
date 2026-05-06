@@ -17,10 +17,13 @@ module tmds_encoder (
 );
 
     // --- Stage 1: Minimize transitions ---
-    wire [3:0] n1d = data[0] + data[1] + data[2] + data[3] + data[4] + data[5] + data[6] + data[7];
-    wire use_xnor = (n1d > 4) || (n1d == 4 && data[0] == 1'b0);
+    wire [3:0] n1d = {3'b0, data[0]} + {3'b0, data[1]} + {3'b0, data[2]} + {3'b0, data[3]} +
+                     {3'b0, data[4]} + {3'b0, data[5]} + {3'b0, data[6]} + {3'b0, data[7]};
+    wire use_xnor = (n1d > 4'd4) || (n1d == 4'd4 && data[0] == 1'b0);
 
+    /* verilator lint_off UNOPTFLAT */
     wire [8:0] q_m;
+    /* verilator lint_on UNOPTFLAT */
     assign q_m[0] = data[0];
     assign q_m[1] = use_xnor ? (q_m[0] ~^ data[1]) : (q_m[0] ^ data[1]);
     assign q_m[2] = use_xnor ? (q_m[1] ~^ data[2]) : (q_m[1] ^ data[2]);
@@ -33,17 +36,18 @@ module tmds_encoder (
 
     // --- Stage 2: DC Balance ---
     reg signed [4:0] cnt; // Running disparity
-    wire [3:0] n1qm = q_m[0] + q_m[1] + q_m[2] + q_m[3] + q_m[4] + q_m[5] + q_m[6] + q_m[7];
+    wire [3:0] n1qm = {3'b0, q_m[0]} + {3'b0, q_m[1]} + {3'b0, q_m[2]} + {3'b0, q_m[3]} +
+                      {3'b0, q_m[4]} + {3'b0, q_m[5]} + {3'b0, q_m[6]} + {3'b0, q_m[7]};
     wire [3:0] n0qm = 4'h8 - n1qm;
     wire signed [4:0] diff_qm = $signed({1'b0, n1qm}) - $signed({1'b0, n0qm});
 
     always @(posedge clk) begin
         if (reset) begin
             tmds <= 10'b0;
-            cnt  <= 5'b0;
+            cnt  <= 5'sh0;
         end else begin
             if (!vde) begin
-                cnt <= 5'b0;
+                cnt <= 5'sh0;
                 case (ctrl)
                     2'b00:   tmds <= 10'b1101010100;
                     2'b01:   tmds <= 10'b0010101011;
@@ -51,8 +55,8 @@ module tmds_encoder (
                     default: tmds <= 10'b1010101100;
                 endcase
             end else begin
-                if (cnt == 0 || n1qm == 4) begin
-                    if (q_m[8] == 0) begin
+                if (cnt == 5'sh0 || n1qm == 4'd4) begin
+                    if (q_m[8] == 1'b0) begin
                         tmds <= {2'b10, ~q_m[7:0]};
                         cnt  <= cnt - diff_qm;
                     end else begin
@@ -60,12 +64,12 @@ module tmds_encoder (
                         cnt  <= cnt + diff_qm;
                     end
                 end else begin
-                    if ((cnt > 0 && n1qm > 4) || (cnt < 0 && n1qm < 4)) begin
+                    if ((cnt > 5'sh0 && n1qm > 4'd4) || (cnt < 5'sh0 && n1qm < 4'd4)) begin
                         tmds <= {1'b1, q_m[8], ~q_m[7:0]};
-                        cnt  <= cnt + $signed({1'b0, q_m[8], 1'b0}) - diff_qm;
+                        cnt  <= cnt + $signed({3'b0, q_m[8], 1'b0}) - diff_qm;
                     end else begin
                         tmds <= {1'b0, q_m[8], q_m[7:0]};
-                        cnt  <= cnt - $signed({1'b0, ~q_m[8], 1'b0}) + diff_qm;
+                        cnt  <= cnt - $signed({3'b0, ~q_m[8], 1'b0}) + diff_qm;
                     end
                 end
             end

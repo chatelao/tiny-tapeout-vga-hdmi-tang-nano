@@ -8,8 +8,8 @@ echo "Installing Toolchain for VGA-to-HDMI Project..."
 sudo apt-get update
 
 # Install FPGA Tools
-echo "Installing FPGA Tools (Yosys, Nextpnr-Gowin, Iverilog)..."
-sudo apt-get install -y yosys nextpnr-gowin iverilog
+echo "Installing FPGA Tools (Yosys, Nextpnr-Gowin, Iverilog, Verilator)..."
+sudo apt-get install -y yosys nextpnr-gowin iverilog verilator
 
 # Install ARM Cross-Compiler
 echo "Installing ARM Cross-Compiler..."

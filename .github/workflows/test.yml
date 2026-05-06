@@ -15,6 +15,9 @@ jobs:
       - name: Install Toolchain
         run: bash install.sh
 
+      - name: Lint Verilog
+        run: bash scripts/lint.sh
+
       - name: Run Tests
         run: bash run_tests.sh
 
