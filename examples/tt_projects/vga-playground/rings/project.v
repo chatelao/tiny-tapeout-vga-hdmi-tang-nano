@@ -73,9 +73,9 @@ module tt_um_vga_example (
     assign uo_out[3] = vsync;    // VSYNC
     assign uo_out[7] = hsync;    // HSYNC
 
-    // Bidirectional pins unused
-    assign uio_out = 8'b0;
-    assign uio_oe  = 8'b0;
+    // Use uio_out[0] for VDE (Video Data Enable)
+    assign uio_out = {7'b0, display_on};
+    assign uio_oe  = 8'h01;
 
     // Frame counter for animation with variable speed
     always @(posedge clk or negedge rst_n) begin

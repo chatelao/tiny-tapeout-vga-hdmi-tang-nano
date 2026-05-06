@@ -16,9 +16,9 @@ module tt_um_vga_example (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-  // Unused outputs assigned to 0.
-  assign uio_out = 0;
-  assign uio_oe  = 0;
+  // Use uio_out[0] for VDE (Video Data Enable)
+  assign uio_out = {7'b0, video_active};
+  assign uio_oe  = 8'h01;
 
   // Suppress unused signals warning
   wire _unused_ok = &{ena, ui_in[7], ui_in[4:0], uio_in};
