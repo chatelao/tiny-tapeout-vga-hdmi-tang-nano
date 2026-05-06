@@ -97,10 +97,10 @@ module tt_um_vga_example(
   // TinyVGA PMOD
   assign {R,G,B} = {6{video_active * sound}};
   assign uo_out = {hsync, B[0], G[0], R[0], vsync, B[1], G[1], R[1]};
-  assign uio_out = {sound, 7'b0};
 
-  // Unused outputs assigned to 0.
-  assign uio_oe  = 8'hff;
+  // Use uio_out[7] for audio and uio_out[0] for VDE (Video Data Enable)
+  assign uio_out = {sound, 6'b0, video_active};
+  assign uio_oe  = 8'h81;
 
   // Suppress unused signals warning
   wire _unused_ok = &{ena, ui_in, uio_in};

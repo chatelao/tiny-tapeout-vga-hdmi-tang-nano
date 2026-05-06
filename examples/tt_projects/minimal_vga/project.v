@@ -44,8 +44,9 @@ module tt_um_minimal_vga(
   // Output a white screen when active
   assign uo_out = {hsync, video_active, video_active, video_active, vsync, video_active, video_active, video_active};
 
-  assign uio_out = 0;
-  assign uio_oe  = 0;
+  // Use uio_out[0] for VDE (Video Data Enable)
+  assign uio_out = {7'b0, video_active};
+  assign uio_oe  = 8'h01;
 
   wire _unused = &{ui_in, uio_in, ena};
 
