@@ -1,5 +1,6 @@
 /* Linting stubs for Gowin primitives and other external modules */
 
+`ifdef VERILATOR
 module rPLL #(
     parameter FCLKIN = "27",
     parameter DEVICE = "GW1NSR-4C",
@@ -40,6 +41,7 @@ module OSER10 (
     // Stub implementation
     assign Q = D0;
 endmodule
+`endif
 
 module tt_um_vga_example (
     input  wire [7:0] ui_in,

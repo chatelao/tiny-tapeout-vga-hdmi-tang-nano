@@ -11,6 +11,9 @@ DEVICE="GW1NSR-LV4CQN48PC7/I6"
 FAMILY="GW1NS-4"
 CST="src/top.cst"
 
+# Options
+WITHOUT_M3=${WITHOUT_M3:-1}
+
 # HDMI Source files (excluding M3 for better compatibility with open toolchain)
 HDMI_SOURCES="src/top.v src/hdmi_clk_gen.v src/hdmi_tx.v src/tmds_encoder.v src/hdmi_serializer.v \
 src/hdmi_data_island_framer.v src/hdmi_data_island_fsm.v src/hdmi_packet_packer.v \
@@ -36,8 +39,13 @@ build_example() {
 
     # Synthesis
     local yosys_cmd=""
+    local read_verilog_flags=""
+    if [ "$WITHOUT_M3" -eq 1 ]; then
+        read_verilog_flags="-DWITHOUT_M3"
+    fi
+
     for src in $all_sources; do
-        yosys_cmd+="read_verilog $src; "
+        yosys_cmd+="read_verilog $read_verilog_flags $src; "
     done
     if [ "$top_mod" != "tt_um_vga_example" ]; then
         yosys_cmd+="rename $top_mod tt_um_vga_example; "
