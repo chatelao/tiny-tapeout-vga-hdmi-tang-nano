@@ -14,6 +14,7 @@ module top (
     output wire [2:0] tmds_d_p
 );
 
+`ifndef WITHOUT_M3
     wire [15:0] m3_gpio;
 
     // --- M3 System ---
@@ -24,6 +25,9 @@ module top (
         .uart0_txd(uart0_txd),
         .reset_n(btn2_pin)
     );
+`else
+    assign uart0_txd = 1'b1;
+`endif
 
     // --- Clock Generation ---
     wire clk_pixel;

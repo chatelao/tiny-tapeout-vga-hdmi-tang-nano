@@ -23,3 +23,7 @@ jobs:
 
       - name: Compile All TT VGA Projects
         run: bash examples/compile_all_projects.sh
+
+      - name: Verify Top Synthesis WITHOUT_M3
+        run: |
+          yosys -p "read_verilog -DWITHOUT_M3 src/top.v src/hdmi_clk_gen.v src/hdmi_tx.v src/tmds_encoder.v src/hdmi_serializer.v src/hdmi_data_island_framer.v src/hdmi_data_island_fsm.v src/hdmi_packet_packer.v src/hdmi_ecc.v src/terc4_encoder.v src/hdmi_data_island_scheduler.v src/hdmi_avi_infoframe.v src/hdmi_acr_packet.v src/hdmi_infoframe_checksum.v src/hvsync_generator.v test/lint_stubs.v; synth_gowin -top top"

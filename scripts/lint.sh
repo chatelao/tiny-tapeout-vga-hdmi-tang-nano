@@ -14,6 +14,10 @@ echo "Running Verilog linting..."
 # - --top-module top: Specify the top-level module
 # - -Wall: Enable all warnings (optional, adjust as needed)
 
+echo "--- Linting WITH M3 (default) ---"
 verilator --lint-only -Isrc src/top.v src/hdmi_ecc.v test/lint_stubs.v --top-module top
+
+echo "--- Linting WITHOUT M3 ---"
+verilator --lint-only -Isrc -DWITHOUT_M3 src/top.v src/hdmi_ecc.v test/lint_stubs.v --top-module top
 
 echo "Verilog linting passed successfully!"
