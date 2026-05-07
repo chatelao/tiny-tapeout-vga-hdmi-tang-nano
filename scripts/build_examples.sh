@@ -6,13 +6,20 @@
 RELEASES_DIR="releases"
 mkdir -p "$RELEASES_DIR"
 
-# Use the device that seems most compatible with the installed nextpnr-gowin
-DEVICE="GW1NSR-LV4CQN48PC7/I6"
-FAMILY="GW1NS-4"
-CST="src/top.cst"
-
 # Options
 WITHOUT_M3=${WITHOUT_M3:-1}
+
+# Use the device that seems most compatible with the installed nextpnr-gowin
+if [ "$WITHOUT_M3" -eq 1 ]; then
+    # GW1NSR-4C (Tang Nano 4K) often has issues with rPLL in older nextpnr-gowin versions.
+    # Using GW1N-4 as a compatible target for the FPGA fabric.
+    DEVICE="GW1N-LV4QN48C6/I5"
+    FAMILY="GW1N-4"
+else
+    DEVICE="GW1NSR-LV4CQN48PC7/I6"
+    FAMILY="GW1NS-4"
+fi
+CST="src/top.cst"
 
 # HDMI Source files (excluding M3 for better compatibility with open toolchain)
 HDMI_SOURCES="src/top.v src/hdmi_clk_gen.v src/hdmi_tx.v src/tmds_encoder.v src/hdmi_serializer.v \
