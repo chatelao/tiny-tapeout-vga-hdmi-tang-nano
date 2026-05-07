@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Toolchain
+        run: bash install.sh
+
+      - name: Ensure Apycula and PATH
+        run: |
+          pip3 install apycula
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Build Bitstreams WITHOUT_M3
+        env:
+          WITHOUT_M3: 1
+        run: bash scripts/build_examples.sh
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: releases/*.fs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
